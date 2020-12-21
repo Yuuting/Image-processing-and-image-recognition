@@ -1,0 +1,8 @@
+1.特征提取：alg = cv2.xfeatures2d.SIFT_create()
+2.计算给定图像与数据集中图像之间的cosine距离：
+v = vector.reshape(1, -1)
+return scipy.spatial.distance.cdist(self.matrix, v, 'cosine').reshape(-1)
+3.# 找到排名前5的匹配结果，并返回相应的匹配图片地址 nearest_img_paths，以及匹配距离img_distances
+nearest_ids = np.argsort(img_distances)[:topn].tolist()    
+nearest_img_paths = self.names[nearest_ids].tolist()
+return nearest_img_paths, img_distances
